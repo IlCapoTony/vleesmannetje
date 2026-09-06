@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Van de lekkerste steaks en beste restaurants tot goede boerderijwinkels. Puur en onbewerkt eten, rechtstreeks van de bron.">
 <meta name="twitter:image" content="https://vleesmannetje.com/assets/img/og.jpg">
 
-<link rel="preload" as="image" href="/assets/img/logo-553.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/logo-600.avif" type="image/avif" fetchpriority="high" imagesrcset="/assets/img/logo-300.avif 300w, /assets/img/logo-600.avif 600w" imagesizes="(min-width:768px) 360px, 76vw">
 <link rel="dns-prefetch" href="https://www.tiktok.com">
 
 <style>
@@ -271,8 +271,11 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
   <section class="hero">
     <div class="wrap">
       <picture>
-        <source srcset="/assets/img/logo-553.avif" type="image/avif">
-        <img class="hero__logo" src="/assets/img/logo-553.webp" width="547" height="482"
+        <source type="image/avif" sizes="(min-width:768px) 360px, 76vw"
+                srcset="/assets/img/logo-300.avif 300w, /assets/img/logo-600.avif 600w">
+        <source type="image/webp" sizes="(min-width:768px) 360px, 76vw"
+                srcset="/assets/img/logo-300.webp 300w, /assets/img/logo-600.webp 600w">
+        <img class="hero__logo" src="/assets/img/logo-600.webp" width="600" height="526"
              alt="Vleesmannetje" fetchpriority="high" decoding="async">
       </picture>
       <span class="eyebrow">Steak spots &middot; puur &amp; onbewerkt eten</span>
@@ -411,7 +414,7 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
   <div class="wrap">
     <picture>
       <source srcset="/assets/img/logo-300.avif" type="image/avif">
-      <img class="ftr__logo" src="/assets/img/logo-300.webp" width="300" height="264" alt="" loading="lazy">
+      <img class="ftr__logo" src="/assets/img/logo-300.webp" width="300" height="263" alt="" loading="lazy">
     </picture>
     <nav class="ftr__nav" aria-label="Sociale media">
       <a class="ico" href="https://www.tiktok.com/@vleesmannetje" target="_blank" rel="me noopener" aria-label="TikTok">
