@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vleesmannetje — De beste steak spots</title>
-<meta name="description" content="Vleesmannetje: de plek voor de beste steak spots. Puur &amp; onbewerkt eten, eerlijke reviews en het mooiste vlees. Volg de laatste video's op TikTok en Instagram.">
+<title>Vleesmannetje | De beste steak spots</title>
+<meta name="description" content="Vleesmannetje: de plek voor de beste steak spots. Puur en onbewerkt eten, vlees rechtstreeks van de boer en groente uit het seizoen. Volg de laatste video's op TikTok en Instagram.">
 <link rel="canonical" href="https://vleesmannetje.com/">
 <meta name="theme-color" content="#140B06">
 <meta name="color-scheme" content="dark">
@@ -17,15 +17,15 @@
 <meta property="og:site_name" content="Vleesmannetje">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:url" content="https://vleesmannetje.com/">
-<meta property="og:title" content="Vleesmannetje — De beste steak spots">
-<meta property="og:description" content="De plek voor de beste steak spots. Puur &amp; onbewerkt eten.">
+<meta property="og:title" content="Vleesmannetje | De beste steak spots">
+<meta property="og:description" content="Puur en onbewerkt eten. Vlees van de boer, groente uit het seizoen.">
 <meta property="og:image" content="https://vleesmannetje.com/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Vleesmannetje logo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vleesmannetje — De beste steak spots">
-<meta name="twitter:description" content="De plek voor de beste steak spots. Puur &amp; onbewerkt eten.">
+<meta name="twitter:title" content="Vleesmannetje | De beste steak spots">
+<meta name="twitter:description" content="Puur en onbewerkt eten. Vlees van de boer, groente uit het seizoen.">
 <meta name="twitter:image" content="https://vleesmannetje.com/assets/img/og.jpg">
 
 <link rel="preload" as="image" href="/assets/img/logo-553.avif" type="image/avif" fetchpriority="high">
@@ -35,8 +35,9 @@
 :root{
   --ink:#140b06; --ink-2:#1d1109; --ink-3:#2a1810;
   --line:rgba(240,192,60,.16);
-  --flame:#f07818; --gold:#f0c03c; --wine:#8e1b1b; --wine-hi:#a82626;
-  --cream:#f7efe6; --muted:#c2ae9c;
+  --flame:#f07818; --gold:#f0c03c; --gold-hi:#ffe07a;
+  --wine:#8e1b1b; --wine-hi:#a82626;
+  --cream:#f7efe6; --muted:#c2ae9c; --outline:#3c1800;
   --wrap:64rem; --r:16px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -54,9 +55,18 @@ h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:800}
 p{margin:0}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 1.25rem}
-.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-999px;top:0;z-index:99;background:var(--gold);color:var(--ink);padding:.6rem 1rem;font-weight:700}
 .skip:focus{left:.5rem;top:.5rem}
+
+/* wordmark in de stijl van het logo: gouden verloop met donkere contour */
+.wordmark{
+  font-weight:900;text-transform:uppercase;letter-spacing:.055em;line-height:1;
+  background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 44%,var(--flame) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:
+    drop-shadow(0 1px 0 var(--outline)) drop-shadow(0 -1px 0 var(--outline))
+    drop-shadow(1px 0 0 var(--outline)) drop-shadow(-1px 0 0 var(--outline));
+}
 
 /* ---------- header ---------- */
 .hdr{
@@ -65,14 +75,8 @@ p{margin:0}
   -webkit-backdrop-filter:saturate(140%) blur(12px);
   border-bottom:1px solid var(--line);
 }
-.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px}
-.hdr__logo{display:flex;align-items:center;gap:.55rem;min-width:0}
-.hdr__logo img{width:34px;height:34px}
-.hdr__logo span{
-  font-weight:800;font-size:.95rem;letter-spacing:.01em;white-space:nowrap;
-  background:linear-gradient(100deg,var(--gold) 10%,var(--flame) 90%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:60px}
+.hdr__logo{font-size:1.05rem;white-space:nowrap;min-width:0}
 .hdr__nav{display:flex;align-items:center;gap:.15rem;flex:none}
 .ico{
   display:grid;place-items:center;width:38px;height:38px;border-radius:11px;
@@ -101,7 +105,7 @@ h1 .flame{
   background:linear-gradient(100deg,var(--gold) 8%,var(--flame) 62%,var(--gold) 96%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.lede{margin:1rem auto 0;max-width:34rem;color:var(--muted);font-size:1.06rem}
+.lede{margin:1rem auto 0;max-width:36rem;color:var(--muted);font-size:1.06rem}
 
 /* ---------- knoppen ---------- */
 .cta{display:flex;flex-direction:column;gap:.7rem;margin:1.9rem auto 0;max-width:23rem}
@@ -139,7 +143,7 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
 .feed{position:relative;min-height:520px;display:flex;justify-content:center}
 .feed blockquote{margin:0!important;width:100%;max-width:780px}
 .feed__skel{
-  position:absolute;inset:0;display:grid;place-items:center;gap:.9rem;
+  position:absolute;inset:0;display:grid;place-items:center;
   border-radius:var(--r);border:1px solid var(--line);
   background:linear-gradient(110deg,var(--ink-2) 30%,var(--ink-3) 50%,var(--ink-2) 70%);
   background-size:220% 100%;animation:sheen 2.1s linear infinite;
@@ -166,12 +170,28 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
   background:rgba(240,192,60,.1);border:1px solid var(--line);color:var(--gold);
 }
 .card__ico svg{width:22px;height:22px}
+.card__nr{
+  display:grid;place-items:center;width:34px;height:34px;border-radius:10px;margin-bottom:.9rem;
+  background:rgba(240,192,60,.1);border:1px solid var(--line);
+  color:var(--gold);font-weight:800;font-size:.85rem;
+}
 
-/* ---------- footer ---------- */
-.ftr{border-top:1px solid var(--line);padding:2.25rem 0;text-align:center;color:var(--muted);font-size:.85rem}
-.ftr__logo{width:120px;margin:0 auto 1.1rem;opacity:.9}
-.ftr__nav{display:flex;justify-content:center;gap:.35rem;margin-bottom:1.1rem}
-.ftr a.txt{color:var(--gold)}
+/* ---------- pers ---------- */
+.pers{
+  margin-top:1rem;border:1px solid var(--line);border-radius:var(--r);
+  padding:1.6rem;background:linear-gradient(160deg,rgba(142,27,27,.22),var(--ink));
+  display:grid;gap:1.1rem;align-items:center;
+}
+.pers blockquote{
+  margin:0;font-size:clamp(1.15rem,3.6vw,1.5rem);font-weight:800;line-height:1.25;
+  letter-spacing:-.01em;color:var(--cream);
+}
+.pers .q::before{content:"\201C"}
+.pers .q::after{content:"\201D"}
+.pers cite{display:block;margin-top:.55rem;font-style:normal;color:var(--gold);font-size:.8rem;
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.pers p{color:var(--muted);font-size:.95rem}
+.pers .btn{margin-top:1.1rem;display:inline-flex}
 
 /* ---------- gids ---------- */
 .gids{
@@ -187,21 +207,34 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
 .gids:hover .gids__cover{transform:rotate(0) translateY(-3px)}
 .gids h3{font-size:clamp(1.25rem,4vw,1.6rem);margin-bottom:.55rem}
 .gids p{color:var(--muted)}
-.gids__meta{
-  display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;list-style:none;padding:0;
-}
+.gids__meta{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;list-style:none;padding:0}
 .gids__meta li{
   padding:.28rem .7rem;border-radius:999px;border:1px solid var(--line);
   background:rgba(240,192,60,.07);color:var(--gold);font-size:.72rem;font-weight:700;
   letter-spacing:.08em;text-transform:uppercase;
 }
 .gids .btn{margin-top:1.3rem;display:inline-flex}
-@media (min-width:48rem){
-  .gids{grid-template-columns:230px 1fr;gap:2.25rem;padding:2.25rem}
-  .gids__cover{width:230px}
+
+/* ---------- afsluiter ---------- */
+.signoff{
+  position:relative;text-align:center;padding:3.5rem 0;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
+.signoff::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 90% at 50% 50%,rgba(240,120,24,.2),transparent 70%);
+}
+.signoff p{position:relative;font-size:clamp(1.45rem,6.4vw,3rem)}
+.signoff .wrap{position:relative}
+
+/* ---------- footer ---------- */
+.ftr{padding:2.25rem 0;text-align:center;color:var(--muted);font-size:.85rem}
+.ftr__logo{width:120px;margin:0 auto 1.1rem;opacity:.9}
+.ftr__nav{display:flex;justify-content:center;gap:.35rem;margin-bottom:1.1rem}
+.ftr a.txt{color:var(--gold)}
 
 @media (min-width:48rem){
+  .hdr__logo{font-size:1.2rem}
   .hero{padding:4rem 0 4.25rem}
   .hero__logo{width:360px}
   .cta{flex-direction:row;justify-content:center;max-width:none}
@@ -209,6 +242,10 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
   .sect{padding:4.5rem 0}
   .cards{grid-template-columns:1fr 1fr}
   .feed{min-height:740px}
+  .pers{grid-template-columns:1.1fr 1fr;gap:2rem;padding:2.25rem}
+  .gids{grid-template-columns:230px 1fr;gap:2.25rem;padding:2.25rem}
+  .gids__cover{width:230px}
+  .signoff{padding:4.5rem 0}
 }
 </style>
 </head>
@@ -217,13 +254,7 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
 
 <header class="hdr">
   <div class="wrap">
-    <a class="hdr__logo" href="/" aria-label="Vleesmannetje — home">
-      <picture>
-        <source srcset="/assets/img/mark-96.avif" type="image/avif">
-        <img src="/assets/img/mark-96.webp" width="96" height="96" alt="" decoding="async">
-      </picture>
-      <span>Vleesmannetje</span>
-    </a>
+    <a class="hdr__logo wordmark" href="/">Vleesmannetje</a>
     <nav class="hdr__nav" aria-label="Sociale media">
       <a class="ico" href="https://www.tiktok.com/@vleesmannetje" target="_blank" rel="me noopener" aria-label="Vleesmannetje op TikTok">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .72-5.08v-3.13a5.7 5.7 0 0 0-.72-.05A5.69 5.69 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48Z"/></svg>
@@ -244,12 +275,12 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
     <div class="wrap">
       <picture>
         <source srcset="/assets/img/logo-553.avif" type="image/avif">
-        <img class="hero__logo" src="/assets/img/logo-553.webp" width="553" height="486"
+        <img class="hero__logo" src="/assets/img/logo-553.webp" width="547" height="482"
              alt="Vleesmannetje" fetchpriority="high" decoding="async">
       </picture>
-      <span class="eyebrow">Steak spots &middot; puur &amp; onbewerkt</span>
+      <span class="eyebrow">Steak spots &middot; puur &amp; onbewerkt eten</span>
       <h1>De plek voor de <span class="flame">beste steak spots</span></h1>
-      <p class="lede">Puur &amp; onbewerkt eten. Op zoek naar het mooiste vlees — eerlijke reviews, geen poespas.</p>
+      <p class="lede">Puur en onbewerkt eten. Vlees waarvan je de herkomst kent, groente en fruit uit het seizoen en zoveel mogelijk rechtstreeks bij de boer vandaan.</p>
       <div class="cta">
         <a class="btn btn--tt" href="https://www.tiktok.com/@vleesmannetje" target="_blank" rel="me noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .72-5.08v-3.13a5.7 5.7 0 0 0-.72-.05A5.69 5.69 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48Z"/></svg>
@@ -266,13 +297,11 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
   <section class="sect sect--alt" id="tiktok">
     <div class="wrap">
       <div class="sect__head">
-        <span class="kicker">Live van TikTok</span>
         <h2>De laatste video's</h2>
-        <p>Nieuwe spots, nieuw vlees. Deze feed werkt automatisch bij zodra er een video online staat.</p>
         <div class="rule"></div>
       </div>
       <div class="feed" id="feed">
-        <div class="feed__skel" aria-hidden="true">Video's worden geladen…</div>
+        <div class="feed__skel" aria-hidden="true">Video's worden geladen</div>
         <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@vleesmannetje"
                     data-unique-id="vleesmannetje" data-embed-type="creator"
                     style="max-width:780px;min-width:288px">
@@ -280,6 +309,81 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
         </blockquote>
       </div>
       <p class="feed__note">Laadt de feed niet? <a href="https://www.tiktok.com/@vleesmannetje" target="_blank" rel="noopener">Bekijk alles direct op TikTok</a>.</p>
+    </div>
+  </section>
+
+  <section class="sect" id="verhaal">
+    <div class="wrap">
+      <div class="sect__head">
+        <span class="kicker">Waar het om gaat</span>
+        <h2>Meer dan alleen vlees</h2>
+        <p>Goed eten begint bij weten waar het vandaan komt. Zo min mogelijk uit de fabriek, zo veel mogelijk van de boer om de hoek.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card__nr">01</div>
+          <h3>Kwaliteit boven kwantiteit</h3>
+          <p>Liever één keer goed dan vaak middelmatig. Vlees waarvan de herkomst bekend is, gekozen op smaak en kwaliteit in plaats van op prijs.</p>
+        </article>
+        <article class="card">
+          <div class="card__nr">02</div>
+          <h3>Puur en onbewerkt</h3>
+          <p>Eten zonder onduidelijke toevoegingen. Een goed gevuld bord doet meer voor je dan welk poedertje uit een bus ook.</p>
+        </article>
+        <article class="card">
+          <div class="card__nr">03</div>
+          <h3>Rechtstreeks bij de boer</h3>
+          <p>Boerderijwinkels, streekslagers en kaasboerderijen in de buurt. Verser, eerlijker en met een gezicht achter je eten.</p>
+        </article>
+        <article class="card">
+          <div class="card__nr">04</div>
+          <h3>Kleur op je bord</h3>
+          <p>Groente en fruit uit het seizoen, in zoveel mogelijk kleuren. Rood, oranje, groen en paars brengen elk iets anders mee.</p>
+        </article>
+      </div>
+
+      <div class="pers">
+        <div>
+          <blockquote><span class="q">Ik kies voor kwaliteit</span><cite>Edwin Broere in het AD</cite></blockquote>
+        </div>
+        <div>
+          <p>Het Algemeen Dagblad ging langs bij Vleesmannetje over herkomst, kwaliteit en waarom een goed stuk rib eye vaker op tafel mag dan je denkt.</p>
+          <a class="btn btn--ig" href="https://www.ad.nl/gorinchem/vleesmannetje-edwin-22-propageert-een-lekker-stuk-rib-eye-of-steak-mag-je-best-paar-keer-per-week-eten~ac9b2bad/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+            Lees het artikel op ad.nl
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect sect--alt" id="gids">
+    <div class="wrap">
+      <div class="sect__head">
+        <span class="kicker">Gratis download</span>
+        <h2>Back to basics gids</h2>
+        <p>Puur eten begint bij het seizoen. Deze kalender laat je maand voor maand zien wat er vers is.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="gids">
+        <picture>
+          <source srcset="/assets/img/gids-cover.avif" type="image/avif">
+          <img class="gids__cover" src="/assets/img/gids-cover.webp" width="520" height="650"
+               alt="Cover van de seizoenskalender voor groente en fruit" loading="lazy" decoding="async">
+        </picture>
+        <div>
+          <h3>Seizoenskalender voor groente en fruit</h3>
+          <p>Voor het hele jaar: per maand welke groenten en welk fruit op hun best zijn. Handig op je telefoon bij de boer, op de markt of in de winkel.</p>
+          <ul class="gids__meta">
+            <li>PDF</li><li>25 pagina's</li><li>Mobiel formaat</li><li>Gratis</li>
+          </ul>
+          <a class="btn btn--tt" href="/files/Seizoensgroente-kalender-mobiel.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+            Download de kalender
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -294,7 +398,7 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
         <article class="card">
           <div class="card__ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .72-5.08v-3.13a5.7 5.7 0 0 0-.72-.05A5.69 5.69 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48Z"/></svg></div>
           <h3>TikTok</h3>
-          <p>Het hoofdplatform. Elke spot, elke steak en elke eerlijke reactie — hier verschijnt alles als eerste.</p>
+          <p>Het hoofdplatform. Elke spot, elke steak en elk eerlijk oordeel verschijnt hier als eerste.</p>
           <a class="btn btn--tt" href="https://www.tiktok.com/@vleesmannetje" target="_blank" rel="me noopener">@vleesmannetje volgen</a>
         </article>
         <article class="card">
@@ -307,42 +411,12 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
     </div>
   </section>
 
-
-  <section class="sect sect--alt" id="gids">
-    <div class="wrap">
-      <div class="sect__head">
-        <span class="kicker">Gratis download</span>
-        <h2>Back to basics gids</h2>
-        <p>Puur eten begint bij het seizoen. Deze kalender laat je maand voor maand zien wat er vers is.</p>
-        <div class="rule"></div>
-      </div>
-      <div class="gids">
-        <picture>
-          <source srcset="/assets/img/gids-cover.avif" type="image/avif">
-          <img class="gids__cover" src="/assets/img/gids-cover.webp" width="520" height="650"
-               alt="Cover van de seizoensgroenten- en fruitkalender" loading="lazy" decoding="async">
-        </picture>
-        <div>
-          <h3>Seizoensgroenten &amp; -fruit kalender</h3>
-          <p>Voor het hele jaar: per maand welke groenten en welk fruit op hun best zijn. Handig op je telefoon in de supermarkt of op de markt.</p>
-          <ul class="gids__meta">
-            <li>PDF</li><li>25 pagina's</li><li>Mobiel formaat</li><li>Gratis</li>
-          </ul>
-          <a class="btn btn--tt" href="/files/Seizoensgroente-kalender-mobiel.pdf" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
-            Download de kalender
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sect" id="contact">
+  <section class="sect sect--alt" id="contact">
     <div class="wrap">
       <div class="sect__head">
         <span class="kicker">Samenwerken</span>
         <h2>Let's meat</h2>
-        <p>Een restaurant, slagerij of merk dat op tafel hoort? Stuur een bericht — ik denk graag mee.</p>
+        <p>Een restaurant, slagerij, boerderijwinkel of merk dat op tafel hoort? Stuur een bericht, ik denk graag mee.</p>
         <div class="rule"></div>
         <div class="cta">
           <a class="btn btn--wine" href="mailto:edwin@vleesmannetje.com">
@@ -352,6 +426,10 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="signoff">
+    <div class="wrap"><p class="wordmark">Eet goed &amp; stay strong</p></div>
   </section>
 
 </main>
@@ -367,7 +445,7 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .72-5.08v-3.13a5.7 5.7 0 0 0-.72-.05A5.69 5.69 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48Z"/></svg></a>
       <a class="ico" href="https://www.instagram.com/vleesmannetje/" target="_blank" rel="me noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg></a>
-      <a class="ico" href="mailto:edwin@vleesmannetje.com" aria-label="E-mail">
+      <a class="ico" href="mailto:edwin@vleesmannetje.com" aria-label="Mail">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a>
     </nav>
     <p>&copy; <span id="jaar">2026</span> Vleesmannetje &middot; <a class="txt" href="mailto:edwin@vleesmannetje.com">edwin@vleesmannetje.com</a></p>
@@ -407,8 +485,8 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"WebSite","@id":"https://vleesmannetje.com/#website","url":"https://vleesmannetje.com/","name":"Vleesmannetje","inLanguage":"nl-NL","description":"De plek voor de beste steak spots. Puur & onbewerkt eten.","publisher":{"@id":"https://vleesmannetje.com/#person"}},
-{"@type":"Person","@id":"https://vleesmannetje.com/#person","name":"Vleesmannetje","alternateName":"@vleesmannetje","description":"Contentmaker over de beste steak spots en puur, onbewerkt eten.","email":"edwin@vleesmannetje.com","url":"https://vleesmannetje.com/","image":"https://vleesmannetje.com/assets/img/og.jpg","sameAs":["https://www.tiktok.com/@vleesmannetje","https://www.instagram.com/vleesmannetje/"]}
+{"@type":"WebSite","@id":"https://vleesmannetje.com/#website","url":"https://vleesmannetje.com/","name":"Vleesmannetje","inLanguage":"nl-NL","description":"De plek voor de beste steak spots. Puur en onbewerkt eten.","publisher":{"@id":"https://vleesmannetje.com/#person"}},
+{"@type":"Person","@id":"https://vleesmannetje.com/#person","name":"Vleesmannetje","alternateName":"@vleesmannetje","description":"Contentmaker over de beste steak spots, puur en onbewerkt eten en producten rechtstreeks van de boer.","email":"edwin@vleesmannetje.com","url":"https://vleesmannetje.com/","image":"https://vleesmannetje.com/assets/img/og.jpg","sameAs":["https://www.tiktok.com/@vleesmannetje","https://www.instagram.com/vleesmannetje/"],"subjectOf":{"@type":"NewsArticle","headline":"Vleesmannetje Edwin propageert rib eye en biefstuk","url":"https://www.ad.nl/gorinchem/vleesmannetje-edwin-22-propageert-een-lekker-stuk-rib-eye-of-steak-mag-je-best-paar-keer-per-week-eten~ac9b2bad/","publisher":{"@type":"Organization","name":"Algemeen Dagblad"}}}
 ]}
 </script>
 </body>
