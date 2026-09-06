@@ -140,7 +140,9 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
 .rule{width:52px;height:3px;margin:1.4rem auto 0;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--flame))}
 
 /* ---------- tiktok feed ---------- */
-.feed{position:relative;min-height:520px;display:flex;justify-content:center}
+.feed{position:relative;display:flex;justify-content:center;align-items:flex-start}
+.feed:not(.is-ready){min-height:430px}
+.feed.is-ready{min-height:0}
 .feed blockquote{margin:0!important;width:100%;max-width:780px}
 .feed__skel{
   position:absolute;inset:0;display:grid;place-items:center;
@@ -241,7 +243,7 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
   .btn{padding:.95rem 1.7rem}
   .sect{padding:4.5rem 0}
   .cards{grid-template-columns:1fr 1fr}
-  .feed{min-height:740px}
+  .feed:not(.is-ready){min-height:600px}
   .pers{grid-template-columns:1.1fr 1fr;gap:2rem;padding:2.25rem}
   .gids{grid-template-columns:230px 1fr;gap:2.25rem;padding:2.25rem}
   .gids__cover{width:230px}
