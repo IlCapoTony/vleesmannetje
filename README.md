@@ -7,7 +7,7 @@ en geen dependencies.
 index.html   Landingspagina (CSS en JS inline)
 404.html     Foutpagina
 assets/img/  Logo, iconen en Open Graph-beeld (AVIF + WebP)
-files/       PDF-downloads
+*.pdf        Downloads
 robots.txt   Crawl-instructies
 sitemap.xml  Sitemap
 ```
