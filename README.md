@@ -1,15 +1,17 @@
 # vleesmannetje.com
 
-Statische landingspagina voor vleesmannetje.com. Plain HTML/CSS/JS, geen build-stap
+Statische site voor vleesmannetje.com. Plain HTML/CSS/JS, geen build-stap
 en geen dependencies.
 
 ```
-index.html   Landingspagina (CSS en JS inline)
-404.html     Foutpagina
-assets/img/  Logo, iconen en Open Graph-beeld (AVIF + WebP)
-*.pdf        Downloads
-robots.txt   Crawl-instructies
-sitemap.xml  Sitemap
+index.html            Landingspagina (CSS en JS inline)
+seizoenskalender/     Seizoenskalender: overzicht en een pagina per maand
+404.html              Foutpagina
+assets/img/           Logo, iconen en Open Graph-beeld (AVIF + WebP)
+assets/img/kalender/  Kalenderbeelden, maandkaarten en social beelden
+*.pdf                 Downloads
+robots.txt            Crawl-instructies
+sitemap.xml           Sitemap
 ```
 
 ## Lokaal bekijken

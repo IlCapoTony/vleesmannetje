@@ -78,12 +78,14 @@ p{margin:0}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:60px}
 .hdr__logo{font-size:1.05rem;white-space:nowrap;min-width:0}
 .hdr__nav{display:flex;align-items:center;gap:.15rem;flex:none}
-.ico{
+.ico,.navlink{
   display:grid;place-items:center;width:38px;height:38px;border-radius:11px;
   color:var(--cream);border:1px solid transparent;transition:color .18s,background .18s,border-color .18s,transform .18s;
 }
-.ico:hover,.ico:focus-visible{color:var(--gold);background:var(--ink-3);border-color:var(--line);transform:translateY(-1px)}
-.ico svg{width:20px;height:20px}
+.ico:hover,.ico:focus-visible,.navlink:hover,.navlink:focus-visible{color:var(--gold);background:var(--ink-3);border-color:var(--line)}
+.ico:hover,.ico:focus-visible{transform:translateY(-1px)}
+.ico svg,.navlink svg{width:20px;height:20px}
+.navlink span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding:2.75rem 0 3rem;text-align:center;overflow:hidden}
@@ -211,6 +213,8 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
   letter-spacing:.08em;text-transform:uppercase;
 }
 .gids .btn{margin-top:1.3rem;display:inline-flex}
+.gids__knoppen{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+.gids__knoppen .btn{margin-top:0}
 
 /* ---------- afsluiter ---------- */
 .signoff{
@@ -229,6 +233,12 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
 .ftr__logo{width:120px;margin:0 auto 1.1rem;opacity:.9}
 .ftr__nav{display:flex;justify-content:center;gap:.35rem;margin-bottom:1.1rem}
 .ftr a.txt{color:var(--gold)}
+.ftr__links{margin-bottom:.5rem}
+
+@media (min-width:40rem){
+  .navlink{display:flex;gap:.45rem;width:auto;padding:0 .7rem;font-size:.88rem;font-weight:700}
+  .navlink span{position:static;width:auto;height:auto;overflow:visible;clip:auto}
+}
 
 @media (min-width:48rem){
   .hdr__logo{font-size:1.2rem}
@@ -252,7 +262,10 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
 <header class="hdr">
   <div class="wrap">
     <a class="hdr__logo wordmark" href="/">Vleesmannetje</a>
-    <nav class="hdr__nav" aria-label="Sociale media">
+    <nav class="hdr__nav" aria-label="Menu">
+      <a class="navlink" href="/seizoenskalender/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.8v3.4M16 2.8v3.4"/><circle cx="8.5" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14" r="1" fill="currentColor" stroke="none"/></svg><span>Seizoenskalender</span>
+      </a>
       <a class="ico" href="https://www.tiktok.com/@vleesmannetje" target="_blank" rel="me noopener" aria-label="Vleesmannetje op TikTok">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .72-5.08v-3.13a5.7 5.7 0 0 0-.72-.05A5.69 5.69 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48Z"/></svg>
       </a>
@@ -378,10 +391,16 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
           <ul class="gids__meta">
             <li>PDF</li><li>25 pagina's</li><li>Mobiel formaat</li><li>Gratis</li>
           </ul>
-          <a class="btn btn--tt" href="/Seizoensgroente-Kalender-Vleesmannetje.pdf" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
-            Download de kalender
-          </a>
+          <div class="gids__knoppen">
+            <a class="btn btn--tt" href="/Seizoensgroente-Kalender-Vleesmannetje.pdf" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+              Download de kalender
+            </a>
+            <a class="btn btn--ig" href="/seizoenskalender/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.8v3.4M16 2.8v3.4"/><circle cx="8.5" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14" r="1" fill="currentColor" stroke="none"/></svg>
+              Bekijk per maand
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -424,6 +443,7 @@ h2{font-size:clamp(1.5rem,4.6vw,2.15rem)}
       <a class="ico" href="mailto:edwin@vleesmannetje.com" aria-label="Mail">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a>
     </nav>
+    <p class="ftr__links"><a class="txt" href="/seizoenskalender/">Seizoenskalender voor groente en fruit</a></p>
     <p>&copy; <span id="jaar">2026</span> Vleesmannetje &middot; <a class="txt" href="mailto:edwin@vleesmannetje.com">edwin@vleesmannetje.com</a></p>
   </div>
 </footer>
