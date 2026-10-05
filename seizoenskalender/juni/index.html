@@ -35,7 +35,7 @@
   --flame:#f07818; --gold:#f0c03c; --gold-hi:#ffe07a;
   --cream:#f7efe6; --muted:#c2ae9c; --outline:#3c1800;
   --leaf:#a3d65c;
-  --wrap:64rem; --r:16px;
+  --wrap:64rem; --wrap-breed:100rem; --r:16px;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -52,6 +52,7 @@ h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:800}
 p{margin:0}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 1.25rem}
+.wrap--breed{max-width:var(--wrap-breed)}
 .skip{position:absolute;left:-999px;top:0;z-index:99;background:var(--gold);color:var(--ink);padding:.6rem 1rem;font-weight:700}
 .skip:focus{left:.5rem;top:.5rem}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -84,6 +85,43 @@ p{margin:0}
 .ico svg,.navlink svg{width:20px;height:20px}
 .navlink span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+/* ---------- uitschuifmenu ---------- */
+.hdr__start{display:flex;align-items:center;gap:.4rem;min-width:0}
+.menuknop,.lade__sluit{
+  display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:11px;
+  color:var(--cream);border:1px solid transparent;transition:color .18s,background .18s,border-color .18s;
+}
+.menuknop{margin-left:-.5rem}
+.menuknop:hover,.menuknop:focus-visible,.lade__sluit:hover,.lade__sluit:focus-visible{color:var(--gold);background:var(--ink-3);border-color:var(--line)}
+.menuknop svg,.lade__sluit svg{width:22px;height:22px}
+.lade{position:fixed;inset:0;z-index:40;visibility:hidden;transition:visibility 0s .3s}
+.lade:target,.lade.is-open{visibility:visible;transition:none}
+.lade__achter{position:absolute;inset:0;background:rgba(8,4,2,.62);opacity:0;transition:opacity .3s}
+.lade:target .lade__achter,.lade.is-open .lade__achter{opacity:1}
+.lade__paneel{
+  position:relative;display:flex;flex-direction:column;width:min(21rem,86vw);height:100%;overflow-y:auto;
+  padding:.6rem 1rem 1.5rem;background:var(--ink-2);border-right:1px solid var(--line);
+  box-shadow:24px 0 60px -30px rgba(0,0,0,.95);transform:translateX(-102%);transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.lade:target .lade__paneel,.lade.is-open .lade__paneel{transform:none}
+.lade__kop{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:48px;margin-bottom:.9rem;padding-left:.75rem}
+.lade__merk{font-size:1rem}
+.lade__groep{margin:1.3rem 0 .35rem;padding:0 .75rem;color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.lade__lijst{list-style:none;margin:0;padding:0;display:grid;gap:.15rem}
+.lade__lijst a{
+  display:flex;align-items:center;gap:.8rem;padding:.72rem .75rem;border-radius:12px;font-weight:700;font-size:1.02rem;line-height:1.25;
+  border:1px solid transparent;transition:background .18s,border-color .18s,color .18s;
+}
+.lade__lijst a:hover,.lade__lijst a:focus-visible{background:var(--ink-3);border-color:var(--line);color:var(--gold)}
+.lade__lijst a[aria-current]{background:rgba(240,192,60,.07);border-color:var(--line)}
+.lade__lijst svg{width:20px;height:20px;flex:none;color:var(--gold)}
+.lade__lijst small{display:block;margin-top:.15rem;color:var(--muted);font-size:.8rem;font-weight:500}
+.lade__sociaal{display:flex;gap:.35rem;margin-top:auto;padding:1.25rem .4rem 0;border-top:1px solid var(--line)}
+html.lade-open{overflow:hidden}
+/* smalle schermen: kalender en mail staan in het menu, zo past het woordmerk naast de menuknop */
+@media (max-width:29.99rem){.hdr__nav .navlink,.hdr__mail{display:none}}
+@media (max-width:22.5rem){.hdr__logo{font-size:.94rem}}
+
 /* ---------- algemeen ---------- */
 .eyebrow{
   display:inline-block;margin:0 0 .9rem;padding:.34rem .85rem;border-radius:999px;
@@ -115,10 +153,6 @@ section[id]{scroll-margin-top:72px}
 .sect{padding:3rem 0}
 .sect--alt{background:linear-gradient(180deg,transparent,rgba(240,192,60,.035) 40%,transparent)}
 .sect__head{text-align:center;max-width:38rem;margin:0 auto 1.9rem}
-.kicker{
-  display:block;color:var(--gold);font-size:.72rem;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;margin-bottom:.6rem;
-}
 h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
 .sect__head p{margin-top:.7rem;color:var(--muted)}
 .rule{width:52px;height:3px;margin:1.4rem auto 0;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--leaf))}
@@ -139,14 +173,36 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
 .crumbs a:hover,.crumbs a:focus-visible{text-decoration:underline;text-underline-offset:3px}
 .khero__kop{text-align:center;max-width:46rem;margin:0 auto}
 .khero__nu{margin-top:1.6rem}
-.banner{margin:2.2rem 0 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);
-  box-shadow:0 26px 50px -30px rgba(0,0,0,.95)}
-.banner img{width:100%}
 .sprong{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1.5rem 0 0;padding:0;list-style:none}
 .sprong a{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .95rem;border-radius:999px;
   border:1px solid var(--line);background:var(--ink-2);font-size:.9rem;font-weight:600;transition:border-color .18s,color .18s}
 .sprong a:hover,.sprong a:focus-visible{border-color:var(--gold);color:var(--gold)}
-.sprong b{color:var(--leaf);font-weight:800}
+
+/* kop met foto: alle tekst wit, een zacht verloop maakt de tekst leesbaar */
+.khero.khero--foto{display:grid;min-height:clamp(34rem,86svh,40rem);padding:0;isolation:isolate;color:#fff}
+.khero--foto::before{display:none}
+.khero__foto{position:absolute;inset:0;z-index:-2}
+.khero__foto img{width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%)}
+.khero--foto::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(14,8,4,.5) 0%,rgba(14,8,4,0) 22%),
+    linear-gradient(0deg,rgba(14,8,4,.92) 0%,rgba(14,8,4,.72) 34%,rgba(14,8,4,.18) 66%,rgba(14,8,4,0) 80%);
+}
+.khero__laag{display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem;padding-top:1.1rem;padding-bottom:2.25rem}
+.khero--foto .crumbs{margin:0;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.khero--foto .crumbs a{color:#fff}
+.khero--foto .crumbs li+li::before{color:#fff}
+.khero--foto .khero__kop{text-align:left;margin:0;max-width:42rem}
+.khero--foto .eyebrow{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(14,8,4,.28)}
+.khero--foto h1{color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.4)}
+.khero__tekst{margin-top:.95rem;max-width:36rem;color:#fff;font-size:1.06rem;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.khero--foto .khero__nu{margin-top:1.5rem}
+.btn--glas{
+  color:#fff;border-color:rgba(255,255,255,.6);background:rgba(14,8,4,.42);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+.btn--glas:hover,.btn--glas:focus-visible{border-color:#fff;background:rgba(14,8,4,.62)}
 
 /* ---------- intro ---------- */
 .tekst{max-width:40rem;margin:0 auto;color:var(--muted);font-size:1.03rem}
@@ -197,15 +253,7 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
 }
 .gids .btn{margin-top:1.3rem}
 .gids--klein .gids__cover{width:min(40vw,150px)}
-
-/* ---------- bronnen ---------- */
-.bronnen{max-width:40rem;margin:0 auto;padding:0;list-style:none;display:grid;gap:.7rem}
-.bronnen li{border:1px solid var(--line);border-radius:12px;padding:1rem 1.15rem;background:linear-gradient(160deg,var(--ink-2),var(--ink))}
-.bronnen strong{display:block;font-size:1rem;margin-bottom:.15rem}
-.bronnen span{display:block;color:var(--muted);font-size:.93rem}
-.bronnen a{display:inline-flex;align-items:center;gap:.35rem;margin-top:.45rem;color:var(--gold);font-size:.9rem;font-weight:700}
-.bronnen a svg{width:16px;height:16px}
-.bronnen a:hover,.bronnen a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.gids--breed .gids__actie .btn{margin-top:0}
 
 /* ---------- maandpagina: beeld en lijst ---------- */
 .duo{display:grid;gap:1.3rem;grid-template-areas:"kop" "img" "lijst"}
@@ -235,8 +283,6 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
 .mnav a.is-nu::after{content:"";position:absolute;top:50%;right:.7rem;width:.42rem;height:.42rem;margin-top:-.21rem;border-radius:50%;background:var(--leaf)}
 .mnav__legenda{margin-top:1rem;text-align:center;color:var(--muted);font-size:.82rem}
 .mnav__legenda i{display:inline-block;width:.42rem;height:.42rem;margin-right:.35rem;border-radius:50%;background:var(--leaf);vertical-align:middle}
-.bronregel{max-width:40rem;margin:2.4rem auto 0;text-align:center;color:var(--muted);font-size:.84rem}
-.bronregel a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- afsluiter en footer ---------- */
 .signoff{
@@ -265,12 +311,20 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
 }
 @media (min-width:48rem){
   .hdr__logo{font-size:1.2rem}
+  .wrap--breed{padding:0 clamp(1.5rem,3.2vw,3rem)}
   .khero{padding:1.4rem 0 3.25rem}
+  .khero.khero--foto{min-height:clamp(30rem,72vh,42rem)}
+  .khero__laag{padding-top:1.4rem;padding-bottom:3.5rem}
+  .khero__tekst{font-size:1.14rem}
   .sect{padding:4.25rem 0}
   .gids{grid-template-columns:230px 1fr;gap:2.25rem;padding:2.25rem}
   .gids__cover{width:230px}
   .gids--klein{grid-template-columns:170px 1fr}
   .gids--klein .gids__cover{width:170px}
+  .gids--breed{grid-template-areas:"cover tekst" "cover actie";row-gap:1.3rem;align-content:center}
+  .gids--breed>picture{grid-area:cover}
+  .gids--breed .gids__tekst{grid-area:tekst}
+  .gids--breed .gids__actie{grid-area:actie}
   .mnav ul{grid-template-columns:repeat(6,minmax(0,1fr))}
   .signoff{padding:4.5rem 0}
 }
@@ -283,15 +337,40 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
   .maanden{grid-template-columns:repeat(4,minmax(0,1fr))}
   .lijst--lang{columns:3}
 }
+@media (min-width:64rem){
+  /* vanaf hier staat de tekst links naast het onderwerp: verloop van links */
+  .khero--foto::after{
+    background:
+      linear-gradient(180deg,rgba(14,8,4,.45) 0%,rgba(14,8,4,0) 20%),
+      linear-gradient(90deg,rgba(14,8,4,.76) 0%,rgba(14,8,4,.52) 34%,rgba(14,8,4,.08) 62%,rgba(14,8,4,0) 78%),
+      linear-gradient(0deg,rgba(20,11,6,.8) 0%,rgba(20,11,6,0) 18%);
+  }
+  .gids--breed{grid-template-columns:250px minmax(0,1fr) auto;grid-template-areas:"cover tekst actie";column-gap:3rem;padding:2.5rem 3rem}
+  .gids--breed .gids__cover{width:250px}
+  .gids--breed h2{font-size:clamp(1.6rem,2.3vw,2.05rem)}
+  .gids--breed p{max-width:42rem;font-size:1.05rem}
+  .gids--breed .gids__actie{align-self:center}
+}
+@media (min-width:80rem){
+  .maanden{gap:1.5rem}
+  .mkaart__body{padding:.95rem 1.15rem 1.15rem}
+  .mkaart h3{font-size:1.24rem}
+  .mkaart__link{font-size:.9rem}
+}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Naar de inhoud</a>
 
 <header class="hdr">
-  <div class="wrap">
-    <a class="hdr__logo wordmark" href="/">Vleesmannetje</a>
-    <nav class="hdr__nav" aria-label="Menu">
+  <div class="wrap wrap--breed">
+    <div class="hdr__start">
+      <a class="menuknop" href="#menu" aria-controls="menu" aria-label="Menu openen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h11"/></svg>
+      </a>
+      <a class="hdr__logo wordmark" href="/">Vleesmannetje</a>
+    </div>
+    <nav class="hdr__nav" aria-label="Snelmenu">
       <a class="navlink" href="/seizoenskalender/" aria-current="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.8v3.4M16 2.8v3.4"/><circle cx="8.5" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14" r="1" fill="currentColor" stroke="none"/></svg><span>Seizoenskalender</span>
       </a>
@@ -301,12 +380,41 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
       <a class="ico" href="https://www.instagram.com/vleesmannetje/" target="_blank" rel="me noopener" aria-label="Vleesmannetje op Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg>
       </a>
-      <a class="ico" href="mailto:edwin@vleesmannetje.com" aria-label="Mail Vleesmannetje">
+      <a class="ico hdr__mail" href="mailto:edwin@vleesmannetje.com" aria-label="Mail Vleesmannetje">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
       </a>
     </nav>
   </div>
 </header>
+
+<div class="lade" id="menu">
+  <a class="lade__achter" href="#" tabindex="-1" aria-hidden="true" data-sluit></a>
+  <div class="lade__paneel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="lade__kop">
+      <span class="lade__merk wordmark">Vleesmannetje</span>
+      <a class="lade__sluit" href="#" aria-label="Menu sluiten" data-sluit><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></a>
+    </div>
+    <nav aria-label="Hoofdmenu">
+      <ul class="lade__lijst" role="list">
+        <li><a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>Home</a></li>
+        <li><a href="/#verhaal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20c.9-3.6 3.7-5.6 7.2-5.6s6.3 2 7.2 5.6"/></svg>Over mij</a></li>
+      </ul>
+      <p class="lade__groep">Inspiratie</p>
+      <ul class="lade__lijst" role="list">
+        <li><a href="/seizoenskalender/" aria-current="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8.5 5.5-14 15-14 0 9.5-5.5 15-14 15"/><path d="M5 19 13 11"/></svg><span>Seizoensgroenten<small>Groente en fruit per maand</small></span></a></li>
+      </ul>
+      <p class="lade__groep">Contact</p>
+      <ul class="lade__lijst" role="list">
+        <li><a href="/#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>Samenwerken</a></li>
+      </ul>
+    </nav>
+    <div class="lade__sociaal">
+      <a class="ico" href="https://www.tiktok.com/@vleesmannetje" target="_blank" rel="me noopener" aria-label="Vleesmannetje op TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .72-5.08v-3.13a5.7 5.7 0 0 0-.72-.05A5.69 5.69 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48Z"/></svg></a>
+      <a class="ico" href="https://www.instagram.com/vleesmannetje/" target="_blank" rel="me noopener" aria-label="Vleesmannetje op Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></svg></a>
+      <a class="ico" href="mailto:edwin@vleesmannetje.com" aria-label="Mail Vleesmannetje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a>
+    </div>
+  </div>
+</div>
 
 <main id="main">
 
@@ -318,8 +426,8 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
         <h1>Seizoensgroente en seizoensfruit in <span class="leaf">juni</span></h1>
         <p class="lede">In juni komt er steeds meer zomerfruit bij, zoals aardbeien, kersen en bessen. Ook met doperwten, tuinbonen en de laatste asperges valt er genoeg te kiezen.</p>
         <ul class="sprong" role="list">
-          <li><a href="#groente"><b>31</b> groenten</a></li>
-          <li><a href="#fruit"><b>10</b> soorten fruit</a></li>
+          <li><a href="#groente">Groenten</a></li>
+          <li><a href="#fruit">Fruit</a></li>
         </ul>
       </div>
     </div>
@@ -329,7 +437,6 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
     <div class="wrap">
       <div class="duo">
         <div class="duo__kop">
-          <span class="kicker">31 groenten</span>
           <h2>Seizoensgroenten in juni</h2>
           <p>Met tuinbonen, doperwten en andere groenten van deze maand kun je volop variëren.</p>
         </div>
@@ -354,7 +461,6 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
     <div class="wrap">
       <div class="duo duo--om">
         <div class="duo__kop">
-          <span class="kicker">10 soorten fruit</span>
           <h2>Seizoensfruit in juni</h2>
           <p>Het aanbod aan zomerfruit groeit, met onder meer aardbeien, kersen en verschillende bessen. Controleer de herkomst; een vermelding garandeert geen Nederlands aanbod in de winkel.</p>
         </div>
@@ -383,7 +489,7 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
           <img class="gids__cover" src="/assets/img/gids-cover.webp" width="520" height="650"
                alt="Cover van de seizoenskalender voor groente en fruit" loading="lazy" decoding="async">
         </picture>
-        <div>
+        <div class="gids__tekst">
 
           <p>Bekijk ook onze seizoenskalender voor het hele jaar.</p>
           <ul class="gids__meta">
@@ -411,7 +517,6 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
         </ul>
         <p class="mnav__legenda" id="legenda" hidden><i aria-hidden="true"></i>De groene stip staat bij de huidige maand.</p>
       </nav>
-      <p class="bronregel">Gebaseerd op de seizoenskalender van het Voedingscentrum, aangevuld met informatie van Velt en telers. <a href="/seizoenskalender/#bronnen">Bekijk de bronnen bij deze kalender.</a></p>
     </div>
   </section>
 
@@ -459,6 +564,37 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
     nu.hidden=false;
   }
   var leg=document.getElementById('legenda');if(leg)leg.hidden=false;
+})();
+</script>
+
+<script>
+(function(){
+  var lade=document.getElementById('menu'),knop=document.querySelector('.menuknop');
+  if(!lade||!knop)return;
+  var html=document.documentElement;
+  knop.setAttribute('role','button');knop.setAttribute('aria-expanded','false');
+  function focusbaar(){return lade.querySelectorAll('.lade__paneel a[href]')}
+  function open(){
+    lade.classList.add('is-open');html.classList.add('lade-open');knop.setAttribute('aria-expanded','true');
+    var l=lade.querySelector('.lade__lijst a');setTimeout(function(){if(l)l.focus()},60);
+  }
+  function dicht(terug){
+    lade.classList.remove('is-open');html.classList.remove('lade-open');knop.setAttribute('aria-expanded','false');
+    if(terug)knop.focus();
+  }
+  knop.addEventListener('click',function(e){e.preventDefault();lade.classList.contains('is-open')?dicht(true):open()});
+  var s=lade.querySelectorAll('[data-sluit]');
+  for(var i=0;i<s.length;i++)s[i].addEventListener('click',function(e){e.preventDefault();dicht(true)});
+  var l=lade.querySelectorAll('.lade__lijst a');
+  for(var j=0;j<l.length;j++)l[j].addEventListener('click',function(){dicht(false)});
+  document.addEventListener('keydown',function(e){
+    if(!lade.classList.contains('is-open'))return;
+    if(e.key==='Escape'){dicht(true);return}
+    if(e.key!=='Tab')return;
+    var f=focusbaar(),eerste=f[0],laatste=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===eerste){e.preventDefault();laatste.focus()}
+    else if(!e.shiftKey&&document.activeElement===laatste){e.preventDefault();eerste.focus()}
+  });
 })();
 </script>
 <script type="application/ld+json">
