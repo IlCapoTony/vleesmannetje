@@ -195,8 +195,8 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
 .khero--foto .crumbs li+li::before{color:#fff}
 .khero--foto .khero__kop{text-align:left;margin:0;max-width:42rem}
 .khero--foto .eyebrow{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(14,8,4,.28)}
-.khero--foto h1{color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.4)}
-.khero__tekst{margin-top:.95rem;max-width:36rem;color:#fff;font-size:1.06rem;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.khero--foto h1{max-width:11.5em;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.4);font-size:clamp(1.85rem,5.4vw,2.6rem)}
+.khero__tekst{margin-top:.95rem;max-width:30rem;color:#fff;font-size:1.06rem;text-shadow:0 1px 12px rgba(0,0,0,.5)}
 .khero--foto .khero__nu{margin-top:1.5rem}
 .btn--glas{
   color:#fff;border-color:rgba(255,255,255,.6);background:rgba(14,8,4,.42);
@@ -328,6 +328,10 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
   .mnav ul{grid-template-columns:repeat(6,minmax(0,1fr))}
   .signoff{padding:4.5rem 0}
 }
+/* staande tablets: de staande foto, met een hogere kop zodat hand en tekst onder elkaar passen */
+@media (min-width:48rem) and (max-aspect-ratio:6/5){
+  .khero.khero--foto{min-height:clamp(34rem,80vh,60rem)}
+}
 @media (min-width:52rem){
   .duo{grid-template-columns:380px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:3rem;row-gap:1.4rem;
     grid-template-areas:"img kop" "img lijst";align-items:start}
@@ -338,13 +342,6 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
   .lijst--lang{columns:3}
 }
 @media (min-width:64rem){
-  /* vanaf hier staat de tekst links naast het onderwerp: verloop van links */
-  .khero--foto::after{
-    background:
-      linear-gradient(180deg,rgba(14,8,4,.45) 0%,rgba(14,8,4,0) 20%),
-      linear-gradient(90deg,rgba(14,8,4,.76) 0%,rgba(14,8,4,.52) 34%,rgba(14,8,4,.08) 62%,rgba(14,8,4,0) 78%),
-      linear-gradient(0deg,rgba(20,11,6,.8) 0%,rgba(20,11,6,0) 18%);
-  }
   .gids--breed{grid-template-columns:250px minmax(0,1fr) auto;grid-template-areas:"cover tekst actie";column-gap:3rem;padding:2.5rem 3rem}
   .gids--breed .gids__cover{width:250px}
   .gids--breed h2{font-size:clamp(1.6rem,2.3vw,2.05rem)}
@@ -352,6 +349,15 @@ h2{font-size:clamp(1.45rem,4.4vw,2.1rem)}
   .gids--breed .gids__actie{align-self:center}
 }
 @media (min-width:80rem){
+  /* vanaf hier staat de tekst links naast het onderwerp: verloop van links */
+  .khero--foto h1{font-size:3.2rem}
+  .khero__tekst{max-width:36rem}
+  .khero--foto::after{
+    background:
+      linear-gradient(180deg,rgba(14,8,4,.45) 0%,rgba(14,8,4,0) 20%),
+      linear-gradient(90deg,rgba(14,8,4,.76) 0%,rgba(14,8,4,.52) 34%,rgba(14,8,4,.08) 62%,rgba(14,8,4,0) 78%),
+      linear-gradient(0deg,rgba(20,11,6,.8) 0%,rgba(20,11,6,0) 18%);
+  }
   .maanden{gap:1.5rem}
   .mkaart__body{padding:.95rem 1.15rem 1.15rem}
   .mkaart h3{font-size:1.24rem}
